@@ -2,6 +2,7 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MVC_Console.Controllers;
 
 namespace MVC_Console.Models
 {
@@ -17,7 +18,7 @@ namespace MVC_Console.Models
 
         public Produto(){
 
-            string pasta= PATH.Split("/")[0];
+            string pasta= PATH.Split('/')[0];
         
         //verificamos se a pasta nao existe e criamos essa condição
         if(!Directory.Exists(pasta))
@@ -27,22 +28,24 @@ namespace MVC_Console.Models
         //Verificamos se o aquivo Produto.csv existe, se não, criamos
         if(!File.Exists(PATH)){
 
-            File.Create(PATH);
+            File.Create(PATH).Close();
         }
         }
-        public List<Produtos> Ler();
-        {
-            List<Produtos> produtos = new List<Produtos>();
+        public List<Produto> Ler()
+        {    
+            List<Produto> produtos = new List<Produto>();
 
             //ler as info do .csv
             string[] linhas = File.ReadAllLines(PATH);
 
-            foreach(string item in linhas){
+            foreach (string item in linhas)
+            {   
+            
                 //separar atributos pelo ";"
                 string[] atributos = item.Split(";");
-
+        
             
-            //criamos um produto vaio para poder colocar na lista de produtos
+            //criamos um produto vazio para poder colocar na lista de produtos
             Produto prod = new Produto();
             prod.Codigo = int.Parse(atributos[0]);
             prod.Nome = atributos[1];
@@ -50,6 +53,10 @@ namespace MVC_Console.Models
 
             produtos.Add(prod);
         }
+        
+    
         return produtos;
     }
+    }
 }
+

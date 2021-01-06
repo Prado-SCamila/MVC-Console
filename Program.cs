@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using  MVC_Console.Models;
-using MVC_Console.Views;
+using MVC_Console.Models;
+using MVC_Console.Controllers;
 
 namespace MVC_Console
 {
@@ -9,9 +8,8 @@ namespace MVC_Console
     {
         static void Main(string[] args)
         {
-            ProdutoControllers produtoController = new ProdutoControllers();
-            produtoController.MostrarProdutos();
-            Console.WriteLine();
+          ProdutoController produtoController = new ProdutoController();
+          produtoController.MostrarProduto();
         }
     }
 }

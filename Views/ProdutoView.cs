@@ -4,7 +4,7 @@ using MVC_Console.Models;
 
 namespace MVC_Console.Views
 {
-    public class ProdutoViews
+    public class ProdutoView
     {
         public void ListarTodos(List <Produto> produtos){
             foreach (Produto item in produtos){
